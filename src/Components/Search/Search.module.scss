@@ -1,0 +1,17 @@
+@import "../../_colors.scss";
+
+.searchLink {
+  & {
+    transition: all 0.2s;
+  }
+  a {
+    @extend .text-dark-blue;
+  }
+  &:hover {
+    background-color: rgba($color: $lightGrayColor, $alpha: 0.2);
+  }
+}
+
+.bgBlue {
+  background-color: $blueColor !important;
+}

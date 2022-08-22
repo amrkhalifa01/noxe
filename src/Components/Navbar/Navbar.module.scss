@@ -1,0 +1,26 @@
+@import "../../_colors.scss";
+
+#nav {
+  @extend .bg-dark-blue;
+  .navToggle {
+    @extend .text-blue;
+    &[aria-expanded="true"] {
+      color: $textRed !important;
+    }
+  }
+  .linkColor {
+    &:hover {
+      @extend .text-blue;
+    }
+    @extend .text-light;
+    transition: all 0.3s !important;
+  }
+}
+
+.dropDownContainer {
+  position: relative;
+  width: fit-content !important;
+  .dropDownMenu {
+    position: absolute !important;
+  }
+}

@@ -1,0 +1,29 @@
+$bgTransparent: transparent;
+$bgDarkColor: #1c2334;
+$blackColor: #000;
+$blueColor: #24baef;
+$lightGrayColor: #d2d2cf;
+$darkGrayColor: #b8b8b8;
+$whiteColor: #fff;
+$textRed: #e11218;
+$alpha: 0.9;
+
+.bg-dark-blue {
+  background-color: $bgDarkColor !important;
+}
+
+.text-dark-blue {
+  color: $bgDarkColor !important;
+}
+
+.text-blue {
+  color: $blueColor !important;
+}
+
+.text-light {
+  color: $whiteColor !important;
+}
+
+.pointer {
+  cursor: pointer;
+}
