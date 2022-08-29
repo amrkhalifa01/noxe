@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 import { User, Response, JoiResult, ErrorDetails } from "../../Context/Interface";
 
 export default function Register() {
-  let baseUrl: string = "https://route-egypt-api.herokuapp.com/";
+  let baseUrl: string = "https://routeegypt.herokuapp.com/";
   let navigate: any = useNavigate();
   let [isLoading, setIsLoading] = useState<boolean>(false);
   let [apiError, setApiError] = useState<string>("");
@@ -185,7 +185,7 @@ export default function Register() {
                   </div>
                   {apiError ? <div className="alert alert-danger py-2">{apiError}</div> : ""}
                   <button type="submit" className={`btn btn-blue px-4 ${isLoading ? "disabled" : ""}`}>
-                    Login {isLoading ? <i className="fa fa-spinner fa-spin"></i> : ""}
+                    Sign Up {isLoading ? <i className="fa fa-spinner fa-spin"></i> : ""}
                   </button>
                 </form>
               </div>
