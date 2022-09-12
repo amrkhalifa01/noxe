@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import Images from "../..";
 
 export default function Notfound() {
   let navigate = useNavigate();
@@ -22,7 +23,7 @@ export default function Notfound() {
             </div>
             <div className="col-md-6">
               <div className="d-none d-md-block">
-                <img src="images/pageNotFound.jpg" className="img-fluid" alt="page not found" />
+                <img src={Images.pageNotFound} className="img-fluid" alt="page not found" />
               </div>
             </div>
           </div>

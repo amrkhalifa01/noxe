@@ -7,7 +7,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "sweetalert2/dist/sweetalert2.all.min.js";
 import "jquery/dist/jquery.min.js";
+import "react-lazy-load-image-component/src/effects/blur.css";
 import "./index.scss";
+import "./media.scss";
 import { HashRouter } from "react-router-dom";
 import Store from "./Context/Store";
 import { ImageCollection } from "./Context/Interface";
@@ -32,5 +34,6 @@ const Images: ImageCollection = {
   navLogo: require("./images/logo-dark.webp"),
   imgNotFound: require("./images/notFound.jpg"),
   companyLogo: require("./images/companyNotFound.jpg"),
+  pageNotFound: require("./images/pageNotFound.jpg"),
 };
 export default Images;

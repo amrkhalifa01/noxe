@@ -4,9 +4,10 @@ import { Movie, Tvshow, Person } from "../../Context/Interface";
 import { movieApiDataContext } from "../../Context/Store";
 import $ from "jquery";
 import Images from "../../index";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 export default function Home() {
-  let { placeholders, isPeopleLoading, isTrendingTvShowsLoading, isTvShowsLoading, isTrendingLoading, isMoviesLoading, goToSearch, goToDetails, movies, setMovies, trendingMovies, setTrendingMovies, TvShows, setTvShows, trendingTvShows, setTrendingTvShows, people, setPeople, getItems, getTrending } = useContext(movieApiDataContext);
+  let { isLoading, placeholders, isPeopleLoading, isTrendingTvShowsLoading, isTvShowsLoading, isTrendingLoading, isMoviesLoading, goToSearch, goToDetails, movies, setMovies, trendingMovies, setTrendingMovies, TvShows, setTvShows, trendingTvShows, setTrendingTvShows, people, setPeople, getItems, getTrending } = useContext(movieApiDataContext);
 
   $("#movies .button-type").on("click", function () {
     $(this).addClass(`${Styles.active}`);
@@ -40,7 +41,9 @@ export default function Home() {
     $(this).addClass(`${Styles.active}`);
     $(".trandingTvShows .drop-button-time").not(this).removeClass(`${Styles.active}`);
   });
-
+  $(function () {
+    $(".loader-container").fadeOut(0);
+  });
   useEffect(() => {
     getItems("movie", "now_playing", setMovies, 1);
     getItems("tv", "on_the_air", setTvShows, 1);
@@ -51,6 +54,7 @@ export default function Home() {
 
   return (
     <>
+      <div className="nav-height"></div>
       <div className="loader-container">
         <div className="loader">
           <svg viewBox="0 0 80 80">
@@ -58,9 +62,8 @@ export default function Home() {
           </svg>
         </div>
       </div>
-      <div className="nav-height"></div>
       <div id="home">
-        <div id={Styles.searchBox} className="mb-5 container-fluid container-lg px-0 shadow-sm">
+        <div id={Styles.searchBox} className="mb-5 container-fluid container-lg px-0 shadow">
           <div className={`py-5 px-md-5 px-4 ${Styles.searchOverLayer}`}>
             <div className="mb-5 text-white">
               <h1 className="mb-1">Welcome.</h1>
@@ -173,14 +176,16 @@ export default function Home() {
                       <div key={index} className="col">
                         <div className="card-container movie-item" onClick={() => goToDetails(movie.id, "movie")}>
                           <div className="mb-4 img-container">
-                            <div className="rounded-2 overflow-hidden">
-                              <img
+                            <div className="rounded-2 overflow-hidden home-img-dimensions">
+                              <LazyLoadImage
+                                effect="blur"
+                                placeholderSrc={Images.imgNotFound}
                                 src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                                 alt="movie poster"
                                 onError={({ target }: any): void => {
                                   target.src = `${Images.imgNotFound}`;
                                 }}
-                                className="img-fluid"
+                                className="img-fluid rounded-2"
                               />
                             </div>
                             <div className="home-rate-circle">{parseFloat(Number(movie.vote_average).toFixed(1))}</div>
@@ -259,14 +264,16 @@ export default function Home() {
                       <div key={index} className="col">
                         <div className="card-container" onClick={() => goToDetails(movie.id, "movie")}>
                           <div className="mb-4 img-container">
-                            <div className="rounded-2 overflow-hidden">
-                              <img
+                            <div className="rounded-2 overflow-hidden home-img-dimensions">
+                              <LazyLoadImage
+                                effect="blur"
+                                placeholderSrc={Images.imgNotFound}
                                 src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                                 alt="movie poster"
                                 onError={({ target }: any): void => {
                                   target.src = `${Images.imgNotFound}`;
                                 }}
-                                className="img-fluid"
+                                className="img-fluid rounded-2"
                               />
                             </div>
                             <div className="home-rate-circle">{parseFloat(Number(movie.vote_average).toFixed(1))}</div>
@@ -361,14 +368,16 @@ export default function Home() {
                       <div key={index} className="col">
                         <div className="card-container" onClick={() => goToDetails(tvShow.id, "tv")}>
                           <div className="mb-4 img-container">
-                            <div className="rounded-2 overflow-hidden">
-                              <img
+                            <div className="rounded-2 overflow-hidden home-img-dimensions">
+                              <LazyLoadImage
+                                effect="blur"
+                                placeholderSrc={Images.imgNotFound}
                                 src={`https://image.tmdb.org/t/p/w500${tvShow.poster_path}`}
                                 alt="tv show poster"
                                 onError={({ target }: any): void => {
                                   target.src = `${Images.imgNotFound}`;
                                 }}
-                                className="img-fluid"
+                                className="img-fluid rounded-2"
                               />
                             </div>
                             <div className="home-rate-circle">{parseFloat(Number(tvShow.vote_average).toFixed(1))}</div>
@@ -447,14 +456,16 @@ export default function Home() {
                       <div key={index} className="col">
                         <div className="card-container" onClick={() => goToDetails(tvShow.id, "tv")}>
                           <div className="mb-4 img-container">
-                            <div className="rounded-2 overflow-hidden">
-                              <img
+                            <div className="rounded-2 overflow-hidden home-img-dimensions">
+                              <LazyLoadImage
+                                effect="blur"
+                                placeholderSrc={Images.imgNotFound}
                                 src={`https://image.tmdb.org/t/p/w500${tvShow.poster_path}`}
                                 alt="tv show poster"
                                 onError={({ target }: any): void => {
                                   target.src = `${Images.imgNotFound}`;
                                 }}
-                                className="img-fluid"
+                                className="img-fluid rounded-2"
                               />
                             </div>
                             <div className="home-rate-circle">{parseFloat(Number(tvShow.vote_average).toFixed(1))}</div>
@@ -488,14 +499,16 @@ export default function Home() {
                     return (
                       <div key={index} className="col">
                         <div className="card-container" onClick={() => goToDetails(person.id, "person")}>
-                          <div className="rounded-2 overflow-hidden mb-2">
-                            <img
+                          <div className="rounded-2 overflow-hidden mb-2 home-img-dimensions">
+                            <LazyLoadImage
+                              effect="blur"
+                              placeholderSrc={Images.imgNotFound}
                               src={`https://image.tmdb.org/t/p/w500${person.profile_path}`}
                               alt="person poster"
                               onError={({ target }: any): void => {
                                 target.src = `${Images.imgNotFound}`;
                               }}
-                              className="img-fluid"
+                              className="img-fluid rounded-2"
                             />
                           </div>
                           <h3 className="h6 mb-0">{person.name}</h3>

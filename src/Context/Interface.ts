@@ -75,10 +75,16 @@ export interface ImageCollection {
   navLogo: any;
   imgNotFound: any;
   companyLogo: any;
+  pageNotFound: any;
 }
 export interface PersonSocialMedia {
   facebook_id?: string;
   instagram_id?: string;
   twitter_id?: string;
   imdb_id?: string;
+}
+export interface MovieVideo {
+  name?: string;
+  key?: string;
+  type?: string;
 }

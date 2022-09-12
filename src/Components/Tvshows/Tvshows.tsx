@@ -5,7 +5,9 @@ export default function Tvshows() {
   return (
     <>
       <div className="nav-height mb-4"></div>
-      <Outlet />
+      <div className="min-vh-100">
+        <Outlet />
+      </div>
     </>
   );
 }

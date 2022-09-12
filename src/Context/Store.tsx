@@ -1,9 +1,8 @@
 import jwtDecode from "jwt-decode";
 import { createContext, useEffect, useState } from "react";
-import { Props, User, Movie, Tvshow, Person } from "./Interface";
+import { Props, User, Movie, Tvshow, Person, MovieVideo } from "./Interface";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import $ from "jquery";
 
 export let authenticationContext = createContext<any>(0);
 export let movieApiDataContext = createContext<any>(0);
@@ -25,6 +24,7 @@ export default function Store({ children }: Props) {
   let [isPeopleLoading, setIsPeopleLoading] = useState<boolean>(true);
   let [isTrendingLoading, setIsTrendingLoading] = useState<boolean>(true);
   let [isTrendingTvShowsLoading, setIsTrendingTvShowsLoading] = useState<boolean>(true);
+  let [trailerKey, setTrailerKey] = useState<MovieVideo>({});
   let navigate = useNavigate();
   let nums = new Array(resPgesNum).fill(1).map((element, index) => index + 1);
   let placeholders = new Array(20).fill(1).map((element, index) => index + 1);
@@ -90,6 +90,21 @@ export default function Store({ children }: Props) {
     setIsLoading(false);
   }
 
+  async function getItemsKeys(mediaType: string, itemId: string) {
+    let { data } = await axios.get(`https://api.themoviedb.org/3/${mediaType}/${itemId}/videos?api_key=961415d22bc62f337bb599ca45cf0653&language=en-US`);
+    getTrailerKey(data.results);
+  }
+
+  function getTrailerKey(keys: MovieVideo[]) {
+    keys.filter((key) => {
+      if (key.type === "Trailer" || key.name === "Official Trailer") {
+        return setTrailerKey(key);
+      } else {
+        return "";
+      }
+    });
+  }
+
   function saveUserData(): void {
     let encodedToken: any = localStorage.getItem("token");
     let decodedToken: User = jwtDecode(encodedToken);
@@ -117,10 +132,6 @@ export default function Store({ children }: Props) {
     });
   }
 
-  $(function () {
-    $(".loader-container").fadeOut(500);
-  });
-
   useEffect(() => {
     if (localStorage.getItem("token")) {
       saveUserData();
@@ -129,7 +140,8 @@ export default function Store({ children }: Props) {
 
   return (
     <authenticationContext.Provider value={{ saveUserData, user, logout }}>
-      <movieApiDataContext.Provider value={{ placeholders, isPeopleLoading, isTrendingTvShowsLoading, isTvShowsLoading, isTrendingLoading, isMoviesLoading, isLoading, setIsLoading, nums, resPgesNum, tvShowSearch, setTvShowSearch, peopleSearch, setPeopleSearch, getSearchItems, movieSearch, setMovieSearch, goToDetails, goToSearch, getDetails, movies, setMovies, trendingMovies, setTrendingMovies, TvShows, setTvShows, trendingTvShows, setTrendingTvShows, people, setPeople, getItems, getTrending }}>
+      <movieApiDataContext.Provider
+        value={{ trailerKey, getItemsKeys, placeholders, isPeopleLoading, isTrendingTvShowsLoading, isTvShowsLoading, isTrendingLoading, isMoviesLoading, isLoading, setIsLoading, nums, resPgesNum, tvShowSearch, setTvShowSearch, peopleSearch, setPeopleSearch, getSearchItems, movieSearch, setMovieSearch, goToDetails, goToSearch, getDetails, movies, setMovies, trendingMovies, setTrendingMovies, TvShows, setTvShows, trendingTvShows, setTrendingTvShows, people, setPeople, getItems, getTrending }}>
         {children}
       </movieApiDataContext.Provider>
     </authenticationContext.Provider>

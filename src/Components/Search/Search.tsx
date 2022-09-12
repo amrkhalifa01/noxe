@@ -10,7 +10,7 @@ export default function Search() {
   return (
     <>
       <div className="nav-height"></div>
-      <div className="container py-2 py-md-5 min-vh-100">
+      <div className="container py-2 py-md-5">
         <div className="row">
           <div className="col-md-3">
             <div className="card mb-3">

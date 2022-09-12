@@ -3,6 +3,7 @@ import { Tvshow } from "../../Context/Interface";
 import Images from "../../index";
 import { useSearchParams } from "react-router-dom";
 import { movieApiDataContext } from "../../Context/Store";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 export default function TvSearch() {
   let [searchParams, setSearchParams] = useSearchParams();
@@ -27,26 +28,27 @@ export default function TvSearch() {
             </svg>
           </div>
         </div>
+      ) : !isLoading && tvShowSearch.length === 0 ? (
+        <div className="min-vh-100">
+          <h2 className="h6 mt-4">There are no tv shows that matched your search.</h2>
+        </div>
       ) : (
-        ""
-      )}
-      {!isLoading && tvShowSearch.length === 0 ? (
-        <h2 className="h6 mt-4">There are no tv shows that matched your search.</h2>
-      ) : (
-        <div className="row g-3 min-vh-100 justify-content-center">
+        <div className="row g-3 justify-content-center min-vh-100">
           {tvShowSearch.map((tvShow: Tvshow, index: number) => {
             return (
-              <div key={index} className="col-6 col-md-4 col-lg-3 col-xl-2">
+              <div key={index} className="col-6 col-lg-4 col-xl-3">
                 <div className="pointer" onClick={() => goToDetails(tvShow.id, "tv")}>
                   <div className="mb-4 img-container">
-                    <div className="rounded-2 overflow-hidden">
-                      <img
+                    <div className="rounded-2 overflow-hidden search-img-dimensions">
+                      <LazyLoadImage
+                        effect="blur"
+                        placeholderSrc={Images.imgNotFound}
                         src={`https://image.tmdb.org/t/p/w500${tvShow.poster_path}`}
                         onError={({ target }: any): void => {
                           target.src = `${Images.imgNotFound}`;
                         }}
-                        alt="movie poster"
-                        className="img-fluid"
+                        alt="Tv Show poster"
+                        className="img-fluid rounded-2"
                       />
                     </div>
                     <div className="home-rate-circle">{parseFloat(Number(tvShow.vote_average).toFixed(1))}</div>
