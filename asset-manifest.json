@@ -1,10 +1,11 @@
 {
   "files": {
-    "main.css": "/noxe/static/css/main.acf0c4a3.css",
-    "main.js": "/noxe/static/js/main.f3d508a8.js",
+    "main.css": "/noxe/static/css/main.b3c1a455.css",
+    "main.js": "/noxe/static/js/main.877eaab2.js",
     "static/js/787.c8163530.chunk.js": "/noxe/static/js/787.c8163530.chunk.js",
     "static/media/fa-solid-900.ttf": "/noxe/static/media/fa-solid-900.422cfe2813b03d900c10.ttf",
     "static/media/fa-brands-400.ttf": "/noxe/static/media/fa-brands-400.aff1938a5c48584fa92b.ttf",
+    "static/media/pageNotFound.jpg": "/noxe/static/media/pageNotFound.4318c6542835c1645d0d.jpg",
     "static/media/fa-solid-900.woff2": "/noxe/static/media/fa-solid-900.64d495f582d4a1590a6c.woff2",
     "static/media/searchBG.jpg": "/noxe/static/media/searchBG.f6940a38f9e398455d77.jpg",
     "static/media/fa-brands-400.woff2": "/noxe/static/media/fa-brands-400.a914b121110f8b6e01c9.woff2",
@@ -17,12 +18,12 @@
     "static/media/fa-v4compatibility.woff2": "/noxe/static/media/fa-v4compatibility.2ec4574b00d1d21ed0a3.woff2",
     "index.html": "/noxe/index.html",
     "static/media/logo-dark.webp": "/noxe/static/media/logo-dark.5aab8137fe2130969ca6.webp",
-    "main.acf0c4a3.css.map": "/noxe/static/css/main.acf0c4a3.css.map",
-    "main.f3d508a8.js.map": "/noxe/static/js/main.f3d508a8.js.map",
+    "main.b3c1a455.css.map": "/noxe/static/css/main.b3c1a455.css.map",
+    "main.877eaab2.js.map": "/noxe/static/js/main.877eaab2.js.map",
     "787.c8163530.chunk.js.map": "/noxe/static/js/787.c8163530.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.acf0c4a3.css",
-    "static/js/main.f3d508a8.js"
+    "static/css/main.b3c1a455.css",
+    "static/js/main.877eaab2.js"
   ]
 }
