@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 import { User, Response, JoiResult, ErrorDetails } from "../../Context/Interface";
 
 export default function Register() {
-  let baseUrl: string = "https://routeegypt.herokuapp.com/";
+  let baseUrl: string = "https://route-egypt-api.herokuapp.com/";
   let navigate: any = useNavigate();
   let [isLoading, setIsLoading] = useState<boolean>(false);
   let [apiError, setApiError] = useState<string>("");
