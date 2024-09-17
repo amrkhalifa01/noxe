@@ -18,7 +18,9 @@ export default function Navbar() {
             <i className="fa-solid fa-align-right"></i>
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            {user ? (
+            {/*user ? () : (
+              ""
+            )*/}
               <>
                 <ul className="navbar-nav me-auto mb-0">
                   <li className="nav-item">
@@ -88,9 +90,6 @@ export default function Navbar() {
                   </button>
                 </form>
               </>
-            ) : (
-              ""
-            )}
 
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0 d-flex">
               <li className="nav-item d-flex align-items-center justify-content-center px-2 order-last order-xl-first mx-2">
