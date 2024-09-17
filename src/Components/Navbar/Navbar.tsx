@@ -107,7 +107,8 @@ export default function Navbar() {
                   <i className="fa-brands fa-spotify"></i>
                 </a>
               </li>
-              {user ? (
+              
+              {/*user ? (
                 <>
                   <li className="nav-item ">
                     <Link onClick={() => logout()} className={`nav-link ${styles.linkColor}`} to="login">
@@ -129,7 +130,7 @@ export default function Navbar() {
                     </Link>
                   </li>
                 </>
-              )}
+              )*/}
             </ul>
           </div>
         </div>
